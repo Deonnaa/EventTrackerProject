@@ -11,6 +11,7 @@ public interface HabitService {
 	Habit create(Habit habit);
 	Habit update(int habitId, Habit habit);
 	boolean deleteById(int habitId);
+	List<Habit> getEnabledHabits();
 	// Search Features
 
 }

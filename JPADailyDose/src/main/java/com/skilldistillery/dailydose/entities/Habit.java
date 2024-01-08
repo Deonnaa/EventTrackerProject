@@ -1,7 +1,11 @@
 package com.skilldistillery.dailydose.entities;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,13 +30,38 @@ public class Habit {
 	@Column(name = "start_date", nullable = false)
 	private Date startDate;
 
+	@Column(name = "end_date")
+	private Date endDate;
+
 	private String frequency;
 
-	private Boolean status;
+	@Column(name = "completion_count")
+	private Integer completionCount;
 
+	@Column(name = "target_count")
+	private Integer targetCount;
+
+	@Column(name = "failure_count")
+	private Integer failureCount;
+
+	@Column(name = "last_reset")
+	private Date lastReset;
+
+	private Boolean enabled;
+
+	@CreationTimestamp
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
+
+	// METHODS
 	public Habit() {
 	}
 
+	// GET & SET
 	public Integer getId() {
 		return id;
 	}
@@ -65,6 +94,14 @@ public class Habit {
 		this.startDate = startDate;
 	}
 
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public String getFrequency() {
 		return frequency;
 	}
@@ -73,18 +110,68 @@ public class Habit {
 		this.frequency = frequency;
 	}
 
-	public Boolean getStatus() {
-		return status;
+	public Integer getCompletionCount() {
+		return completionCount;
 	}
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+	public void setCompletionCount(Integer completionCount) {
+		this.completionCount = completionCount;
+	}
+
+	public Integer getTargetCount() {
+		return targetCount;
+	}
+
+	public void setTargetCount(Integer targetCount) {
+		this.targetCount = targetCount;
+	}
+
+	public Integer getFailureCount() {
+		return failureCount;
+	}
+
+	public void setFailureCount(Integer failureCount) {
+		this.failureCount = failureCount;
+	}
+
+	public Date getLastReset() {
+		return lastReset;
+	}
+
+	public void setLastReset(Date lastReset) {
+		this.lastReset = lastReset;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	@Override
 	public String toString() {
 		return "Habit [id=" + id + ", name=" + name + ", description=" + description + ", startDate=" + startDate
-				+ ", frequency=" + frequency + ", status=" + status + "]";
+				+ ", endDate=" + endDate + ", frequency=" + frequency + ", completionCount=" + completionCount
+				+ ", targetCount=" + targetCount + ", failureCount=" + failureCount + ", lastReset=" + lastReset
+				+ ", enabled=" + enabled + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
 
 	@Override
