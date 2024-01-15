@@ -232,7 +232,7 @@ function addHabit() {
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
-			if (xhr.status === 200 || 201) {
+			if (xhr.status === 200 || xhr.status === 201) {
 				let habit = JSON.parse(xhr.responseText);
 				loadHabitList(habit);
 
