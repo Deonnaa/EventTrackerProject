@@ -1,0 +1,43 @@
+body {
+	background-color: lightpink;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#habitListBody {
+	font-size: medium;
+	border-color: #000;
+}
+
+#habitDetails {
+	font-size: medium;
+}
+
+.habit-row:hover {
+	background-color: #f0f0f0;
+	cursor: pointer;
+}
+
+.check-box {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	position: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.check-box:after {
+	content: '';
+	position: absolute;
+	display: none;
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid #000;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
