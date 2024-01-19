@@ -37,17 +37,15 @@ function displayHabitList(habitList) {
 
 	let headerRow = document.createElement('tr');
 
-	// Header cell for the ID
+	// Header Cells
 	let th = document.createElement('th');
 	th.textContent = 'No.';
 	headerRow.appendChild(th);
 
-	// Header cell for the Habit Name
 	th = document.createElement('th');
 	th.textContent = 'Habit Name';
 	headerRow.appendChild(th);
 
-	// Header cell for day of Week
 	let daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	for (let day of daysOfWeek) {
 		th = document.createElement('th');
@@ -55,16 +53,17 @@ function displayHabitList(habitList) {
 		headerRow.appendChild(th);
 	}
 
-	// Append the header row to the table head
+	// Append Header Row to thead
 	thead.appendChild(headerRow);
 
 	let tbody = document.getElementById('habitListBody');
+	tbody.innerHTML = '';
 
-	//Row for each Habit
+	//Table Body Rows for each Habit
 	for (let habit of habitList) {
 		let tr = document.createElement('tr');
-		tr.className = 'habit-row'; // Add class for styling
-		tr.onclick = function() { // Set up click event for the whole row
+		tr.className = 'habit-row'; // Class for styling
+		tr.onclick = function() { // Click event for the whole row
 			getHabitDetails(habit.id);
 		};
 		tbody.appendChild(tr);
@@ -75,9 +74,11 @@ function displayHabitList(habitList) {
 
 		td = document.createElement('td');
 		td.textContent = habit.name;
-		td.onclick = function() {
+		
+		/*td.onclick = function() {
 			(habit.id); // Add event listener to show habit details
-		};
+		};*/
+		
 		tr.appendChild(td);
 
 
@@ -87,7 +88,7 @@ function displayHabitList(habitList) {
 
 			let checkbox = document.createElement('input');
 			checkbox.type = 'checkbox';
-			checkbox.className = 'check-box';
+			checkbox.className = 'check-box'; // Class for styling
 			td.appendChild(checkbox);
 
 			tr.appendChild(td);
@@ -234,7 +235,7 @@ function addHabit() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200 || xhr.status === 201) {
 				let habit = JSON.parse(xhr.responseText);
-				loadHabitList(habit);
+				loadHabitList();
 
 			} else {
 				console.error('Error adding new habit:', xhr.responseText);

@@ -28,6 +28,7 @@ public class HabitServiceImpl implements HabitService {
 
 	@Override
 	public Habit create(Habit habit) {
+		habit.setEnabled(true);
 		return habitRepo.saveAndFlush(habit);
 	}
 
